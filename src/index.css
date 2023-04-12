@@ -1,11 +1,13 @@
 body {
   margin: 0;
   padding: 0;
+  position: fixed;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #161A1E;
 }
 
 code {
@@ -19,7 +21,7 @@ code {
   background-color: #161A1E;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.2fr 9fr;
 }
 
 .logo{
@@ -35,4 +37,66 @@ code {
   float: right;
   display: block;
   margin-top: 6px;
+}
+
+.sidebar-bg{
+  background-color: #161A1E;
+  width: 67px;
+  height: 90vh;
+}
+
+.accounts-svg{
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+.cards-svg{
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  margin-top: 0;
+}
+
+.send-money-svg{
+  height: 60px;
+  width: 60px;
+  margin-left: 2px;
+}
+
+.scan-qr-svg{
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  margin-top: 2px;
+  margin-left: 2px;
+}
+
+.loan-apply-svg{
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  margin-top: 0;
+}
+
+.beneficiary-svg{
+  height: 60px;
+  width: 60px;
+  margin-top: 0;
+}
+
+.atm-near-me-svg{
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  margin-top: 7px;
+}
+
+.faq-svg{
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  margin-top: 1px;
 }
