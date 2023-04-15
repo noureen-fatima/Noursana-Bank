@@ -9,6 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #161A1E;
   color: whitesmoke;
+  min-height: 100vh;
 }
 
 code {
@@ -102,13 +103,6 @@ code {
   width: 60px;
   margin: 5px;
   margin-top: 1px;
-}
-
-.home-page-body-bg{
-  background-color: white;
-  width: 500px;
-  height: 500px;
-  z-index: 99999;
 }
 
 .Accounts{
