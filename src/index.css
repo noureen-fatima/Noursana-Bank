@@ -100,3 +100,10 @@ code {
   margin: 5px;
   margin-top: 1px;
 }
+
+.home-page-body-bg{
+  background-color: white;
+  width: 500px;
+  height: 500px;
+  z-index: 99999;
+}
