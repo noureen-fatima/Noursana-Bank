@@ -8,6 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #161A1E;
+  color: whitesmoke;
 }
 
 code {
@@ -42,7 +43,9 @@ code {
 .sidebar-bg{
   background-color: #161A1E;
   width: 67px;
+  top:63px;
   height: 90vh;
+  position: fixed;
 }
 
 .accounts-svg{
@@ -99,11 +102,418 @@ code {
   width: 60px;
   margin: 5px;
   margin-top: 1px;
-}
 
 .home-page-body-bg{
   background-color: white;
   width: 500px;
   height: 500px;
   z-index: 99999;
+
+.Accounts{
+  margin-left: 75px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr ;
+}
+
+.TransactionHistory {
+  
+  background-color: #262d33;
+  border-radius: 10px;
+ 
+}
+
+.Balance {
+  padding: 10px;
+  padding-top: 15px;
+  padding-bottom: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.TotalDebt{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-left: 10px;
+  
+}
+
+
+.TotalCredit{
+  padding-left: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.Amt{
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: -1px;
+}
+
+.Debt-label{
+  margin-top: 0;
+  font-size: 16px;
+}
+
+.HistoryDetails{
+  margin-left: 15px;
+  font-size: 16px;
+  padding: 4px;
+  padding-left: 20px;
+  height: 100vh;
+  background-color: #262d33 ;
+  border-radius: 10px;
+}
+
+.B-name {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-gap: 10px; /* Spacing between columns */
+  padding-bottom: 10px;
+  border-bottom: solid 0.01px gray;
+}
+
+.Currency{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-gap: 10px; 
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: solid 0.01px gray;
+}
+
+.Avail-bal{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-gap: 10px; 
+  padding-bottom: 10px;
+  border-bottom: solid 0.01px gray;
+  padding-top: 10px;
+}
+
+.Cur-bal{
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-gap: 10px; 
+  padding-bottom: 10px;
+  border-bottom: solid 0.01px gray;
+  padding-top: 10px;
+}
+
+.Date-Input{
+  width: 300px;
+  border-radius: 20px;
+  height: 30px;
+  background-color: #cdd1de;
+  border: none;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.Date-Input:active{
+  border-color: white; 
+}
+
+.btns {
+  border: none;
+  border-radius: 20px; 
+  padding: 8px 16px; 
+  cursor: pointer;
+}
+
+.button-container {
+  position: absolute;
+  display: flex; 
+  gap: 20px; 
+}
+
+.D-btn {
+  background-color: #007bff; 
+  color: #fff; 
+}
+
+.P-btn{
+  background-color: lightcoral;
+  color: #fff; 
+}
+
+.trans-date{
+  text-align: center;
+  background-color: #161A1E;
+  padding: 10px;
+}
+
+
+.trans-list-item{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+.li-amt{
+  text-align: right;
+  padding-right: 25px;
+}
+
+.Transaction-details{
+  overflow: auto;
+  height: 100vh;
+}
+
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: gray; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #161A1E; 
+}
+
+.O-C-balance{ 
+ 
+  bottom: 0;
+  position: fixed;
+  width:59.3%;
+  background-color: #D8AE5E;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+  border-radius: 10px;
+  color:#161A1E;
+}
+
+.O-balance, .C-balance{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-left: 10px;
+}
+
+.SendMoney{
+
+  display: flex;
+  flex-direction: column;
+  margin-left: 60%;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: solid 1px gray;
+}
+
+.SendMoney div,
+.SendMoney label,
+.SendMoney input,
+.SendMoney select {
+  margin-bottom: 10px;
+  width:70%;
+}
+
+.SendMoney label {
+  display: block;
+  padding-left: 2px;
+}
+
+.SendMoney select {
+  width: 400px;
+  border-radius: 20px;
+  height: 30px;
+  background-color: #cdd1de;
+  border: none;
+  padding: 5px;
+  margin-top: 5px;
+  background-color: #262d33;
+  color: white;
+}
+
+.send-btn{
+  width: 30%;
+  margin-left: 200px;
+  font-size: 16px;
+  background-image: linear-gradient(to right, #D8AE5E, #E7D49E);
+  color: #262d33;
+  font-size: 18px;
+}
+
+.SendMoney input, .loan-req input, .qr-req input{
+  width: 500px;
+  border-radius: 20px;
+  height: 24px;
+  color: white;
+  background-color: #262d33;
+  border: none;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+
+.select-payment-type option:checked {
+  /* Set your desired styles for the selected option */
+  background-color: darkslategray; /* Set your desired background color */
+  color: #ffffff; /* Set your desired text color */
+}
+
+.b-l-super
+{
+  position: fixed;
+  top: 64px;
+  width: 100%;
+ 
+}
+
+.B-list{
+  margin-left: 70px ;
+  width: 50%;
+  font-size: 18px;
+}
+.b-list-item{
+  display: grid;
+  background-color: #262d33;
+  grid-template-columns: 0fr 1fr 1fr 1fr;
+  padding-left: 10px;
+  column-gap: 0cap;
+  padding-top: 20px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+.b-heading{
+  margin-left: 25%;
+}
+.b-list-item img{
+  margin-bottom: 6px;
+  margin-top: -6px;
+}
+
+.b-l-btns{
+  margin-left: 26%;
+}
+.b-l-add{
+  margin-left: 4px;
+}
+
+.B-list {
+  max-height: 600px; /* Set the maximum height for the container */
+  overflow-y: auto; /* Add a scrollbar on the y-axis when needed */
+}
+
+.b-l-sort, .b-l-add, .loan-btn{
+  background-image: linear-gradient(to right, #D8AE5E, #E7D49E);
+  color: #262d33;
+  font-size: 16px;
+}
+
+.loan-req{
+    margin-left: 20%;
+    display: grid;
+    grid-template-columns: 0.4fr 1fr;
+    font-size: 18px;
+  }
+  
+
+.loan-head{
+  padding-top: 12px;
+}
+
+.loan-input label{
+  font-size: 18px;
+  padding-bottom: 2px;
+}
+
+.loan-input input{
+  margin-bottom: 4px;
+}
+
+.loan-btn{
+  margin-left: 20%;
+}
+
+.BeneManage{
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.b-m-list{
+  margin-left: 2%;
+
+ 
+}
+
+.b-m-heading{
+  margin-left: 40%;
+}
+
+.b-m-btns{
+  margin-left: 45%;
+}
+
+.bm-li{
+  display: grid;
+  grid-template-columns: 0.25fr 0.75fr 1fr 1fr 1fr;
+  padding-left: 10%;
+  font-size: 18px;
+}
+
+
+.del-svg , .edit-svg{
+  cursor: pointer;
+}
+
+button{
+  cursor: pointer;
+}
+
+.qr-req{
+  margin-left: 20%;
+  display: grid;
+  grid-template-columns: 0.4fr 1fr;
+  font-size: 18px;
+}
+
+.qr-btn{
+  width: 20%;
+  font-size: 16px;
+  background-image: linear-gradient(to right, #D8AE5E, #E7D49E);
+  color: #262d33;
+  font-size: 18px;
+}
+
+.qr-btn{
+  margin-left: 20%;
+}
+
+.qr-input{
+  margin-top: -6px;
+}
+
+.c-manage-btn{
+  background-color: lightcoral;
+  color: #fff; 
+  font-size: 16px;
+}
+
+.c-det-btn {
+  background-color: #007bff; 
+  color: #fff; 
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.Card-Info{
+  margin-left: 10%;
+}
+
+.c-btns {
+  margin-left: 5%;
 }
