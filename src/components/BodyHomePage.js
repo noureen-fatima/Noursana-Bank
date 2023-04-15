@@ -56,6 +56,11 @@ function BodyHomePage() {
                     <div className="acc-balance"><p>Rs. 50,789.00</p></div>
                     <img className="graph-svg" src={graph} alt="graph" />
                 </div>
+                    <div className="welcome-user-txt">Welcome, User</div>
+                    
+                </div>
+                
+                <div className="acc-balance">Rs. 50,789.00</div>
             </div>
         </>
     )
