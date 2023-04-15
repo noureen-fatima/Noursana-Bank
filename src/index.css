@@ -1,10 +1,10 @@
+@import url(//fonts.googleapis.com/css?family=Forum);
+
 body {
   margin: 0;
   padding: 0;
   position: fixed;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Forum;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #161A1E;
@@ -378,6 +378,33 @@ code {
   width: 50%;
   font-size: 18px;
 }
+
+.offer-list{
+  overflow-y: auto;
+  max-height: 400px;
+  list-style: none;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.discount-svg{
+  width: 60px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+li.offer{
+  display: grid;
+  background-color: #262d33;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 0cap;
+  padding-top: 20px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  margin-left: 0;
+}
+
 .b-list-item{
   display: grid;
   background-color: #262d33;
@@ -412,6 +439,26 @@ code {
   background-image: linear-gradient(to right, #D8AE5E, #E7D49E);
   color: #262d33;
   font-size: 16px;
+}
+
+.b-l-deets{
+  background-image: linear-gradient(to right, #D8AE5E, #E7D49E);
+  color: #262d33;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.b-l-seemore{
+  background-image: linear-gradient(to right, #D8AE5E, #E7D49E);
+  color: #262d33;
+  font-size: 16px;
+  margin: 5px;
+  margin-bottom: 25px;
+  margin-left: 90px;
+}
+
+.discount-txt{
+  margin-top: 15px;
 }
 
 .loan-req{
@@ -516,4 +563,54 @@ button{
 
 .c-btns {
   margin-left: 5%;
+}
+
+.home-page-body-bg{
+  position: relative;
+  margin-left: 67px;
+  height: 100em;
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding: 15px;
+}
+
+.left-side{
+  text-align:right;
+}
+
+.welcome-user-txt, .acc-balance{
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.acc-balance{
+  margin-right: 15px;
+}
+
+p{
+  background: linear-gradient(#D8AE5E, #E7D49E);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.discounts{
+  border-radius: 10px;
+  border: solid 1px gray;
+  margin-top: 28px;
+  height: 28%;
+}
+
+.latest-offers-heading{
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.graph-svg{
+  width: 80%;
+  margin: 45px;
 }
