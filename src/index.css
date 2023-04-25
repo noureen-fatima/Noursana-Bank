@@ -4,12 +4,15 @@ body {
   margin: 0;
   padding: 0;
   position: fixed;
-  font-family: Forum;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ 
   background-color: #161A1E;
   color: whitesmoke;
   min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
 }
 
 code {
@@ -25,6 +28,20 @@ code {
   grid-template-rows: 1fr;
   grid-template-columns: 0.2fr 9fr;
 }
+
+.sidebar-bg img{
+  cursor: pointer;
+  padding-top: 4px;
+}
+
+.sidebar-bg img:hover{
+  background-color: #262d33;
+}
+
+.profile-icon :hover{
+  background-color: #262d33;
+}
+
 
 .logo{
   height: 60px;
@@ -584,14 +601,14 @@ button{
   margin-right: 15px;
 }
 
-p{
+/* p{
   background: linear-gradient(#D8AE5E, #E7D49E);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   padding: 0;
   margin: 0;
-}
+} */
 
 .discounts{
   border-radius: 10px;
@@ -609,4 +626,62 @@ p{
 .graph-svg{
   width: 80%;
   margin: 45px;
+}
+
+.faq-heading{
+  display: grid;
+  grid-template-columns: 0fr 0fr;
+}
+.faqs{
+ 
+  margin-left: 5%;
+  font-family: 'Forum';
+  margin-right: 5%;
+}
+
+.faq-h1{
+  margin-top: 20%;
+  font-size: 24px;
+}
+
+.faqs-svg{
+  margin-top: -20px;
+
+}
+
+.faq1{
+  background-color: #262d33;
+  padding-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+ul{
+  list-style-type: none;
+}
+
+.questions{
+  margin-top: -50px;
+}
+
+
+
+.faq1 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.que-svg {
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+}
+
+.q-text{
+  flex-grow: 1;
+  margin-top: -4px;
 }
