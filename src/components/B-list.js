@@ -1,5 +1,5 @@
 import profileLabel from "../resources/profile-label.svg"
-
+import React from 'react';
 function BeneList(){
     return(
         <div className="b-l-super">

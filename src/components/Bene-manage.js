@@ -1,6 +1,7 @@
 import profileLabel from "../resources/profile-label.svg"
 import edit from "../resources/edit.svg"
 import del from "../resources/delete.svg"
+import React from 'react';
 function BeneManage()
 {
     return(

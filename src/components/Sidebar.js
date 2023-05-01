@@ -6,6 +6,7 @@ import loan from "../resources/loan-apply.svg"
 import beneficiary from "../resources/profile-setting.svg"
 import atm from "../resources/atm-location.svg"
 import faq from "../resources/faq.svg"
+import React from 'react';
 import { Link } from "react-router-dom";
 
 function Sidebar(){
@@ -51,5 +52,4 @@ function Sidebar(){
         </>
     )
 }
-
 export default Sidebar;

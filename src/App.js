@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -10,13 +10,15 @@ import QrPg from './components/Qr-page';
 import CardPg from './components/CardPg';
 import FaqPg from './components/FaqPg';
 import HomePage from './components/HomePage';
+import SignIn from './components/LoginSignup';
 function App() {
   return(
     <>
 
     <BrowserRouter>
     <Switch>
-        <Route exact path = "/" component = {HomePage}></Route>
+        <Route exact path = "/" component = {SignIn}></Route>
+        <Route path = "/welcome" component = {HomePage}></Route>
         <Route path = "/accounts" component = {AccountsPg}></Route>
         <Route path = "/sendmoney" component = {SendMoneyPg}></Route>
         <Route path = "/faqs" component = {FaqPg}></Route>

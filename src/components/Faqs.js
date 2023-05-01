@@ -1,3 +1,4 @@
+import React from 'react'
 import faqs from "../resources/FAQS.svg"
 import que from "../resources/que.svg"
 function Faqs(){
@@ -18,5 +19,4 @@ function Faqs(){
         </div>
     );
 }
-
 export default Faqs;

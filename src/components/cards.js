@@ -1,3 +1,4 @@
+import React from 'react';
 import card from "../resources/cards.svg"
 function Cards(){
     return(
