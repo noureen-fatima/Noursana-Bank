@@ -19,5 +19,4 @@ function Faqs(){
         </div>
     );
 }
-
 export default Faqs;
