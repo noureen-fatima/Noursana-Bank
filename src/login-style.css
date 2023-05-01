@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
 html, body {
   position: relative;
   min-height: 100vh;
-  background-color: #E1E8EE;
+  background-color: #262d33;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Fira Sans", Helvetica, Arial, sans-serif;
+  font-family: Forum;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,8 +32,7 @@ html, body {
   left: 0;
   background-repeat: no-repeat;
   background-position: left bottom;
-  background-size: 500px;
-  background-image: url("https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bf884ad570b50659c5fa2dc2cfb20ecf&auto=format&fit=crop&w=1000&q=100");
+  background-image: url("https://github.com/karissa-kaal/random/blob/main/bg.png?raw=true")
 }
 .form-structor .signup {
   position: absolute;
@@ -56,6 +55,13 @@ html, body {
 .form-structor .signup.slide-up .form-title {
   font-size: 1em;
   cursor: pointer;
+  text-align: right;
+  margin-top: 25px;
+  background: linear-gradient(#D8AE5E, #E7D49E);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: larger;
 }
 .form-structor .signup.slide-up .form-title span {
   margin-right: 5px;
@@ -102,8 +108,8 @@ html, body {
   color: rgba(0, 0, 0, 0.4);
 }
 .form-structor .signup .submit-btn {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: rgba(255, 255, 255, 0.7);
+  background-image: linear-gradient(to right, #D8AE5E, #E7D49E);
+  color: rgba(0, 0, 0, 0.7);
   border: 0;
   border-radius: 15px;
   display: block;
@@ -193,7 +199,7 @@ html, body {
   color: rgba(0, 0, 0, 0.4);
 }
 .form-structor .login .center .submit-btn {
-  background-color: #6B92A4;
+  background-color: #007bff;
   color: rgba(255, 255, 255, 0.7);
   border: 0;
   border-radius: 15px;
@@ -210,7 +216,7 @@ html, body {
 }
 .form-structor .login .center .submit-btn:hover {
   transition: all 0.3s ease;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-image: linear-gradient(to right, #D8AE5E, #E7D49E);
 }
 .form-structor .login.slide-up {
   top: 90%;
@@ -238,4 +244,4 @@ html, body {
   opacity: 1;
   visibility: visible;
   -webkit-transition: all 0.3s ease;
-}/*# sourceMappingURL=style.css.map */
+}

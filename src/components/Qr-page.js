@@ -1,3 +1,4 @@
+import React from 'react';
 import QRcode from "./QR-req";
 import Header from "./Header";
 import Sidebar from "./Sidebar";

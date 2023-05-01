@@ -1,6 +1,6 @@
 import dis from "../resources/discount.svg"
 import graph from "../resources/graph.svg"
-
+import React from 'react';
 function BodyHomePage() {
     return(
         <>

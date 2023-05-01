@@ -1,5 +1,5 @@
 import DiscountOffer from "./DiscountOffer"
-
+import React from 'react';
 function Discounts({offers}) {
   return (
     <div>

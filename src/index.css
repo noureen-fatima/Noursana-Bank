@@ -4,15 +4,12 @@ body {
   margin: 0;
   padding: 0;
   position: fixed;
- 
   background-color: #161A1E;
   color: whitesmoke;
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-  sans-serif;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
+  font-family: forum;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
@@ -581,11 +578,12 @@ button{
 .home-page-body-bg{
   position: relative;
   margin-left: 67px;
-  height: 100em;
+  height: 70%;
   display: grid; 
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   padding: 15px;
+  background-color: #161A1E;
 }
 
 .left-side{

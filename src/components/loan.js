@@ -1,4 +1,5 @@
 import form from "../resources/form.svg"
+import React from 'react';
 function Loan(){
     return(
         <div className="loan-req">

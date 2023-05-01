@@ -1,3 +1,4 @@
+import React from 'react';
 import QR from "../resources/qr.svg"
 function QRcode(){
     return(
