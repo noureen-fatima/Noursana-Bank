@@ -1,3 +1,4 @@
+
 import facerecg from "../resources/face-recg.svg"
 import React from 'react';
 import { useState } from 'react';
@@ -11,15 +12,37 @@ function LoginSignup() {
     const [loginId, setLoginId] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [email, setEmail] = useState('');
+  
+    const [name, setName] = useState("");
+    const [CNIC, setCNIC] = useState("");
+    const [Card, setCard] = useState("");
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
+   
         if (!showLoginFields) {
         setShowLoginFields(true);
         } else {
         // handle form submission logic here
         }
     };
+    // handle form submission
+
+  
+    const handleNameChange = (e) =>{
+        setName(e.target.value);
+    }
+
+    const handleCNICChange = (e) =>{
+        setCNIC(e.target.value);
+    }
+
+    const handleCardChange = (e) =>{
+        setCard(e.target.value);
+    }
+
 
     const handleLoginClick = () => setIsLogin(false);
     const handleSignupClick = () => setIsLogin(true);
@@ -33,20 +56,23 @@ function LoginSignup() {
                     </h2>
                     <form onSubmit={handleSubmit}>
                         <div className="form-holder">
-                            {!showLoginFields && (
-                            <>
-                                <input type="text" className="input" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-                                <input type="text" className="input" placeholder="CNIC" value={cnic} onChange={(e) => setCnic(e.target.value)} />
-                                <input type="text" className="input" placeholder="Debit/Credit Card" value={card} onChange={(e) => setCard(e.target.value)} />
-                            </>
-                            )}
-                            {showLoginFields && (
-                            <>
-                                <input type="text" className="input" placeholder="Log In ID" value={loginId} onChange={(e) => setLoginId(e.target.value)} />
-                                <input type="password" className="input" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                                <input type="password" className="input" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                            </>
-                            )}
+                 
+                        {!showLoginFields && (
+                        <>
+                            <input type="text" className="input" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+                            <input type="text" className="input" placeholder="CNIC" value={cnic} onChange={(e) => setCnic(e.target.value)} />
+                            <input type="text" className="input" placeholder="Debit/Credit Card" value={card} onChange={(e) => setCard(e.target.value)} />
+                        </>
+                        )}
+                        {showLoginFields && (
+                        <>
+                            <input type="text" className="input" placeholder="Log In ID" value={loginId} onChange={(e) => setLoginId(e.target.value)} />
+                            <input type="text" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input type="password" className="input" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" className="input" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                       
+                        </>
+                        )}
                         </div>
                         {showLoginFields && (
                             <div className="face-recog-svg">
