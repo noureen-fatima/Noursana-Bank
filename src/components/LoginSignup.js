@@ -5,10 +5,15 @@ import { useState } from 'react';
 
 function LoginSignup() {
     const [isLogin, setIsLogin] = useState(true);
-
-    const handleLoginClick = () => setIsLogin(false);
-    const handleSignupClick = () => setIsLogin(true);
-
+    const [name, setName] = useState('');
+    const [cnic, setCnic] = useState('');
+    const [card, setCard] = useState('');
+    const [showLoginFields, setShowLoginFields] = useState(false);
+    const [loginId, setLoginId] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [email, setEmail] = useState('');
+  
     const [name, setName] = useState("");
     const [CNIC, setCNIC] = useState("");
     const [Card, setCard] = useState("");
@@ -16,24 +21,12 @@ function LoginSignup() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(name,CNIC, Card);
-        fetch("http://localhost:8000/register",{
-            method: "POST",
-            crossDomain: true,
-            headers:{
-                "Content-Type": "application/json",
-                Accept:"application/json",
-                "Acess-Control-Allow-Origin":"*",
-            },
-            body:JSON.stringify({
-                name,
-                CNIC,
-                Card,
-            }),
-        }).then((res)=> res.json())
-        .then((data)=>{
-            console.log(data, "userRegister")
-        })
+   
+        if (!showLoginFields) {
+        setShowLoginFields(true);
+        } else {
+        // handle form submission logic here
+        }
     };
     // handle form submission
 
@@ -51,6 +44,9 @@ function LoginSignup() {
     }
 
 
+    const handleLoginClick = () => setIsLogin(false);
+    const handleSignupClick = () => setIsLogin(true);
+
     return (
         <div className="container-lg">
             <div className="form-structor">
@@ -60,16 +56,32 @@ function LoginSignup() {
                     </h2>
                     <form onSubmit={handleSubmit}>
                         <div className="form-holder">
-                        <input type="text" className="input" placeholder="Name" onChange={handleNameChange}/>
-                        <input type="text" className="input" placeholder="CNIC" onChange={handleCNICChange}/>
-                        <input type="text" className="input" placeholder="Debit/Credit Card" onChange={handleCardChange}/>
+                 
+                        {!showLoginFields && (
+                        <>
+                            <input type="text" className="input" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+                            <input type="text" className="input" placeholder="CNIC" value={cnic} onChange={(e) => setCnic(e.target.value)} />
+                            <input type="text" className="input" placeholder="Debit/Credit Card" value={card} onChange={(e) => setCard(e.target.value)} />
+                        </>
+                        )}
+                        {showLoginFields && (
+                        <>
+                            <input type="text" className="input" placeholder="Log In ID" value={loginId} onChange={(e) => setLoginId(e.target.value)} />
+                            <input type="text" className="input" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                            <input type="password" className="input" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input type="password" className="input" placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                       
+                        </>
+                        )}
                         </div>
-
-                        <div className="face-recog-svg">
-                        <img src={facerecg} alt="face recognition" />
-                        </div>
-                        <button type="submit" className="submit-btn">Sign up</button>
+                        {showLoginFields && (
+                            <div className="face-recog-svg">
+                                <img src={facerecg} alt="face recognition" />
+                            </div>
+                        )}
+                        <button type="submit" className="submit-btn">{showLoginFields ? 'Sign up' : 'Next'}</button>
                     </form>
+
                 </div>
 
                 <div className={`login ${isLogin ? 'slide-up' : ''}`}>
