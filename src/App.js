@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import AccountsPg from './components/AccountsPg';
 import SendMoneyPg from './components/SendMoneyPg';
@@ -11,24 +11,26 @@ import CardPg from './components/CardPg';
 import FaqPg from './components/FaqPg';
 import HomePage from './components/HomePage';
 import SignIn from './components/LoginSignup';
+import MapsPg from './components/MapsPg';
 function App() {
   return(
     <>
 
     <BrowserRouter>
-    <Switch>
-        <Route exact path = "/" component = {SignIn}></Route>
-        <Route path = "/welcome" component = {HomePage}></Route>
-        <Route path = "/accounts" component = {AccountsPg}></Route>
-        <Route path = "/sendmoney" component = {SendMoneyPg}></Route>
-        <Route path = "/faqs" component = {FaqPg}></Route>
-        <Route path = "/benefactory" component = {BManagePg}></Route>
-        <Route path = "/loan" component = {LoanPg}></Route>
-        <Route path = "/qr" component = {QrPg}></Route>
-        <Route path = "/cards" component = {CardPg}></Route>
+    <Routes>
+        <Route exact path = "/" element = {<SignIn/>}></Route>
+        <Route path = "/welcome" element = {<HomePage/>}></Route>
+        <Route path = "/accounts" element = {<AccountsPg/>}></Route>
+        <Route path = "/sendmoney" element = {<SendMoneyPg/>}></Route>
+        <Route path = "/faqs" element = {<FaqPg/>}></Route>
+        <Route path = "/benefactory" element = {<BManagePg/>}></Route>
+        <Route path = "/loan" element = {<LoanPg/>}></Route>
+        <Route path = "/qr" element = {<QrPg/>}></Route>
+        <Route path = "/cards" element = {<CardPg/>}></Route>
+        <Route path = "/ATM" element = {<MapsPg/>}></Route>
 
 
-    </Switch>
+    </Routes>
     </BrowserRouter>
       
     </>   
