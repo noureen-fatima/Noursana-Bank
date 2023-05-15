@@ -3,6 +3,7 @@ import facerecg from "../resources/face-recg.svg"
 import React from 'react';
 import { makeApiRequest } from "../api/api";
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function LoginSignup() {
     const [isLogin, setIsLogin] = useState(true);
@@ -19,6 +20,7 @@ function LoginSignup() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
   
+    const history = useHistory();
 
     const verifySignup = async() => {
         const url = '/signupverify';
@@ -30,6 +32,22 @@ function LoginSignup() {
             const response = await makeApiRequest(url, method, body);
             console.log('Response:', response);
             setShowLoginFields(true);
+            return response;
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
+        }
+    }
+
+    const verifyLogin = async() =>{
+        const url = '/login';
+        const method = 'POST';
+        const body = { loginId, password};
+        console.log(body);
+        try {
+            const response = await makeApiRequest(url, method, body);
+            console.log('Response:', response);
+            history.push('/welcome'); 
             return response;
         } catch (error) {
             console.error('Error:', error);
@@ -67,7 +85,9 @@ function LoginSignup() {
             }
         }
         else{
+            console.log('here');
             try{
+                console.log('here');
                 await registerUser();
                 console.log('registered');
             }
@@ -77,7 +97,16 @@ function LoginSignup() {
           
         }
     };
-    // handle form submission
+   
+    const handleLoginSubmit = async (event) => {
+        event.preventDefault();
+            try{
+                await verifyLogin();
+            }
+            catch(error){
+                console.log(error);
+            }
+    };
 
 
 
@@ -126,10 +155,10 @@ function LoginSignup() {
                         <h2 className="form-title" id="login" onClick={handleLoginClick}>
                         Log in
                         </h2>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleLoginSubmit}>
                         <div className="form-holder">
-                            <input type="login-id" className="input" placeholder="Login ID" />
-                            <input type="password" className="input" placeholder="Password" />
+                            <input type="login-id" className="input" placeholder="Login ID" onChange={(e)=>setLoginId(e.target.value)} />
+                            <input type="password" className="input" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />
                         </div>
                         <button type="submit" className="submit-btn">Log in</button>
                         <hr/>
