@@ -1,47 +1,84 @@
 
 import facerecg from "../resources/face-recg.svg"
 import React from 'react';
+import { makeApiRequest } from "../api/api";
 import { useState } from 'react';
 
 function LoginSignup() {
     const [isLogin, setIsLogin] = useState(true);
     const [name, setName] = useState('');
     const [cnic, setCnic] = useState('');
-    const [card, setCard] = useState('');
+    const [cardNo, setCardNo] = useState('');
+
+
+    const [isDisabled, setIsDisabled] = useState(false);//to enable or disable next btn 
+
     const [showLoginFields, setShowLoginFields] = useState(false);
     const [loginId, setLoginId] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
   
-    const [name, setName] = useState("");
-    const [CNIC, setCNIC] = useState("");
-    const [Card, setCard] = useState("");
+
+    const verifySignup = async() => {
+        const url = '/signupverify';
+        const method = 'POST';
+        console.log(name, cnic, cardNo);
+        const body = { name, cnic, cardNo };
+        console.log(body);
+        try {
+            const response = await makeApiRequest(url, method, body);
+            console.log('Response:', response);
+            setShowLoginFields(true);
+            return response;
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
+        }
+    }
+
+    const registerUser = async() => {
+        const url = '/register';
+        const method = 'POST';
+        console.log(loginId, password, email, cnic);
+        const body = {loginId, password, email, cnic};
+        console.log(body);
+        try {
+            const response = await makeApiRequest(url, method, body);
+            console.log('Response:', response);
+            return response;
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
+        }
+    }
 
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-   
-        if (!showLoginFields) {
-        setShowLoginFields(true);
-        } else {
-        // handle form submission logic here
+        if (!showLoginFields)
+        {
+            try{
+                await verifySignup();
+                setShowLoginFields(true);
+            }
+            catch(error){
+
+            }
+        }
+        else{
+            try{
+                await registerUser();
+                console.log('registered');
+            }
+            catch(error){
+                    console.log(error);
+            }
+          
         }
     };
     // handle form submission
 
-  
-    const handleNameChange = (e) =>{
-        setName(e.target.value);
-    }
-
-    const handleCNICChange = (e) =>{
-        setCNIC(e.target.value);
-    }
-
-    const handleCardChange = (e) =>{
-        setCard(e.target.value);
-    }
 
 
     const handleLoginClick = () => setIsLogin(false);
@@ -61,7 +98,7 @@ function LoginSignup() {
                         <>
                             <input type="text" className="input" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
                             <input type="text" className="input" placeholder="CNIC" value={cnic} onChange={(e) => setCnic(e.target.value)} />
-                            <input type="text" className="input" placeholder="Debit/Credit Card" value={card} onChange={(e) => setCard(e.target.value)} />
+                            <input type="text" className="input" placeholder="Debit/Credit Card" value={cardNo} onChange={(e) => setCardNo(e.target.value)} />
                         </>
                         )}
                         {showLoginFields && (
@@ -79,7 +116,7 @@ function LoginSignup() {
                                 <img src={facerecg} alt="face recognition" />
                             </div>
                         )}
-                        <button type="submit" className="submit-btn">{showLoginFields ? 'Sign up' : 'Next'}</button>
+                        <button type="submit" className="submit-btn" >{showLoginFields ? 'Sign up' : 'Next'}</button>
                     </form>
 
                 </div>
