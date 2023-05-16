@@ -39,10 +39,11 @@ function LoginSignup() {
         }
     }
 
+
     const verifyLogin = async() =>{
         const url = '/login';
         const method = 'POST';
-        const body = { loginId, password};
+        const body = { loginId, password, cnic};
         console.log(body);
         try {
             const response = await makeApiRequest(url, method, body);
@@ -72,6 +73,23 @@ function LoginSignup() {
     }
 
 
+    //function to note the current user
+    const updateCurrentUser = async() => {
+        const url = '/updateCurrentUser';
+        const method = 'POST';
+        const body = {loginId};
+        console.log(body);
+        try {
+            const response = await makeApiRequest(url, method, body);
+            console.log('Response:', response);
+            return response;
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
+        }
+
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!showLoginFields)
@@ -90,6 +108,8 @@ function LoginSignup() {
                 console.log('here');
                 await registerUser();
                 console.log('registered');
+                await updateCurrentUser();
+                console.log('current user updated')
             }
             catch(error){
                     console.log(error);
@@ -102,6 +122,10 @@ function LoginSignup() {
         event.preventDefault();
             try{
                 await verifyLogin();
+                console.log('user login verified')
+                await updateCurrentUser();
+                console.log('current user updated')
+                
             }
             catch(error){
                 console.log(error);
