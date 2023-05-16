@@ -28,10 +28,9 @@ code {
 
 .sidebar-bg img{
   cursor: pointer;
-  padding-top: 4px;
 }
 
-.sidebar-bg img:hover{
+.sidebar-bg img:hover, .accounts-svg.active, .cards-svg.active, .send-money-svg.active, .scan-qr-svg.active, .loan-apply-svg.active, .beneficiary-svg.active, .atm-near-me-svg.active, .faq-svg.active{
   background-color: #262d33;
 }
 
@@ -397,22 +396,33 @@ code {
   padding-right: 15px;
 }
 
-.discount-svg{
-  width: 60px;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  padding: 0;
+.q-list{
+  overflow-y: auto;
+  max-height: 350px;
 }
 
 li.offer{
   display: grid;
   background-color: #262d33;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 0cap;
+  grid-template-rows: 1.9fr 0.1fr;
   padding-top: 20px;
   border-radius: 10px;
   margin-bottom: 16px;
   margin-left: 0;
+  text-align: center;
+}
+
+.discount-txt{
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.discount-svg{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
 }
 
 .b-list-item{
@@ -464,11 +474,7 @@ li.offer{
   font-size: 16px;
   margin: 5px;
   margin-bottom: 25px;
-  margin-left: 90px;
-}
-
-.discount-txt{
-  margin-top: 15px;
+  margin-left: 63px;
 }
 
 .loan-req{
@@ -580,7 +586,7 @@ button{
   margin-left: 67px;
   height: 100em;
   display: grid; 
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.8fr 1.2fr;
   grid-template-rows: 1fr;
   padding: 15px;
   background-color: #161A1E;
@@ -622,7 +628,7 @@ button{
 }
 
 .graph-svg{
-  width: 80%;
+  width: 60%;
   margin: 45px;
 }
 
@@ -662,7 +668,7 @@ ul{
 }
 
 .questions{
-  margin-top: -50px;
+  margin-top: -80px;
 }
 
 
