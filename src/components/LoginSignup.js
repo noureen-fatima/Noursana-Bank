@@ -3,7 +3,8 @@ import facerecg from "../resources/face-recg.svg"
 import React from 'react';
 import { makeApiRequest } from "../api/api";
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
 
 function LoginSignup() {
     const [isLogin, setIsLogin] = useState(true);
@@ -11,16 +12,13 @@ function LoginSignup() {
     const [cnic, setCnic] = useState('');
     const [cardNo, setCardNo] = useState('');
 
-
-    const [isDisabled, setIsDisabled] = useState(false);//to enable or disable next btn 
+    const navigate = useNavigate();
 
     const [showLoginFields, setShowLoginFields] = useState(false);
     const [loginId, setLoginId] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
-  
-    const history = useHistory();
 
     const verifySignup = async() => {
         const url = '/signupverify';
@@ -47,7 +45,7 @@ function LoginSignup() {
         try {
             const response = await makeApiRequest(url, method, body);
             console.log('Response:', response);
-            history.push('/welcome'); 
+            navigate('/welcome'); 
             return response;
         } catch (error) {
             console.error('Error:', error);
@@ -72,6 +70,22 @@ function LoginSignup() {
     }
 
 
+    const verifyLogin = async() =>{
+        const url = '/login';
+        const method = 'POST';
+        const body = { loginId, password};
+        console.log(body);
+        try {
+            const response = await makeApiRequest(url, method, body);
+            console.log('Response:', response);
+            navigate('/welcome');
+            return response;
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
+        }
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!showLoginFields)
@@ -90,6 +104,7 @@ function LoginSignup() {
                 console.log('here');
                 await registerUser();
                 console.log('registered');
+                navigate('/welcome');
             }
             catch(error){
                     console.log(error);
@@ -108,7 +123,15 @@ function LoginSignup() {
             }
     };
 
-
+    const handleLoginSubmit = async (event) => {
+        event.preventDefault();
+            try{
+                await verifyLogin();
+            }
+            catch(error){
+                console.log(error);
+            }
+    };
 
     const handleLoginClick = () => setIsLogin(false);
     const handleSignupClick = () => setIsLogin(true);
