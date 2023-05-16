@@ -396,6 +396,11 @@ code {
   padding-right: 15px;
 }
 
+.q-list{
+  overflow-y: auto;
+  max-height: 350px;
+}
+
 li.offer{
   display: grid;
   background-color: #262d33;
@@ -663,7 +668,7 @@ ul{
 }
 
 .questions{
-  margin-top: -50px;
+  margin-top: -80px;
 }
 
 

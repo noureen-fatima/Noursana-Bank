@@ -3,6 +3,7 @@ import facerecg from "../resources/face-recg.svg"
 import React from 'react';
 import { makeApiRequest } from "../api/api";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function LoginSignup() {
     const [isLogin, setIsLogin] = useState(true);
@@ -10,8 +11,7 @@ function LoginSignup() {
     const [cnic, setCnic] = useState('');
     const [cardNo, setCardNo] = useState('');
 
-
-    const [isDisabled, setIsDisabled] = useState(false);//to enable or disable next btn 
+    const navigate = useNavigate();
 
     const [showLoginFields, setShowLoginFields] = useState(false);
     const [loginId, setLoginId] = useState('');
@@ -54,6 +54,22 @@ function LoginSignup() {
     }
 
 
+    const verifyLogin = async() =>{
+        const url = '/login';
+        const method = 'POST';
+        const body = { loginId, password};
+        console.log(body);
+        try {
+            const response = await makeApiRequest(url, method, body);
+            console.log('Response:', response);
+            navigate('/welcome');
+            return response;
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
+        }
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!showLoginFields)
@@ -70,6 +86,7 @@ function LoginSignup() {
             try{
                 await registerUser();
                 console.log('registered');
+                navigate('/welcome');
             }
             catch(error){
                     console.log(error);
@@ -79,7 +96,15 @@ function LoginSignup() {
     };
     // handle form submission
 
-
+    const handleLoginSubmit = async (event) => {
+        event.preventDefault();
+            try{
+                await verifyLogin();
+            }
+            catch(error){
+                console.log(error);
+            }
+    };
 
     const handleLoginClick = () => setIsLogin(false);
     const handleSignupClick = () => setIsLogin(true);
@@ -126,7 +151,7 @@ function LoginSignup() {
                         <h2 className="form-title" id="login" onClick={handleLoginClick}>
                         Log in
                         </h2>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleLoginSubmit}>
                         <div className="form-holder">
                             <input type="login-id" className="input" placeholder="Login ID" />
                             <input type="password" className="input" placeholder="Password" />
