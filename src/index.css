@@ -450,6 +450,13 @@ li.offer{
   margin-left: 4px;
 }
 
+.b-l-btns .b-l-add{
+  margin: 0;
+  padding: 30px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 .B-list {
   max-height: 600px; /* Set the maximum height for the container */
   overflow-y: auto; /* Add a scrollbar on the y-axis when needed */
