@@ -1,63 +1,70 @@
-import React from 'react';
-function Accounts(){
+import React, { useEffect, useState } from 'react';
+import { makeApiRequest } from '../api/api';
+
+function Accounts() {
+    const [transactions, setTransactions] = useState([]);
+    const [openingBalance, setOpeningBalance] = useState('');
+    const [closingBalance, setClosingBalance] = useState('');
+
+    useEffect(() => {
+        // Fetch transaction data from the API
+        const fetchTransactions = async () => {
+            try {
+                const url = '/transactionData';
+                const method = 'GET';
+                const body = {};
+                const response = await makeApiRequest(url, method, body);
+                setTransactions(response.data);
+
+                if (response.data.length > 0) {
+                    const firstTransaction = response.data[0];
+                    const openingBal = firstTransaction.bal + (firstTransaction.amount % 2 === 0 ? Math.abs(firstTransaction.amount) : -Math.abs(firstTransaction.amount));
+                    setOpeningBalance(openingBal);
+
+                    const lastTransaction = response.data[response.data.length - 1];
+                    const closingBal = lastTransaction.bal;
+                    setClosingBalance(closingBal);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchTransactions();
+    }, []);
 
     return(
         <div className="Accounts">
             <div className="TransactionHistory">
                 <div className="Balance">
-                    <div className="TotalDebt">
-                    <p className="Debt-label">Total Debt</p>
-                    <p className="Amt"> Rs. 20000</p>
-                    </div>
                     <div className = "TotalCredit">
-                        <p className="Debt-label">Total Credit</p>
-                        <p className="Amt"> Rs. 20000</p>
+                        <p className="Debt-label">Balance</p>
+                        <p className="Amt"> Rs. {closingBalance}</p>
                     </div>
                 </div>
-
-                <div className="Transaction-details">
-                    <p className="trans-date">12/Apr/23</p>
-                    <ul className="trans-list trans-list1">
-                        <li className="trans-list-item"><div className="TransText">Funds Transfer 12456787 from HBL 12345 to HBL 2345566 </div><p className="li-amt Amt"> Rs. 20000</p></li>
-                        <li className="trans-list-item"><div className="TransText">Funds Transfer 12456787 from HBL 12345 to HBL 2345566 </div><p className="li-amt Amt"> Rs. 20000</p></li>
+            {transactions.slice().reverse().map((transaction) => (
+                <div key={transaction.transid}>
+                    <p className="trans-date">{transaction.timestamp}</p>
+                    <ul className="trans-list">
+                    <li className="trans-list-item">
+                        <div className="TransText">
+                        Funds Transfer from {transaction.senderName} ({transaction.senderAccNo}) to {transaction.recipientName} ({transaction.recipientAccNo})
+                        </div>
+                        <p className="li-amt Amt">Rs. {transaction.amount}</p>
+                    </li>
                     </ul>
-
-                    <p className="trans-date">11/May/23</p>
-                    <ul className="trans-list trans-list2">
-                        <li className="trans-list-item"><div className="TransText">Funds Transfer 12456787 from HBL 12345 to HBL 2345566 </div><p className="li-amt Amt"> Rs. 20000</p></li>
-                        <li className="trans-list-item"><div className="TransText">Funds Transfer 12456787 from HBL 12345 to HBL 2345566 </div><p className="li-amt Amt"> Rs. 20000</p></li>
-                    </ul>
-
-                    <p className="trans-date">11/May/23</p>
-                    <ul className="trans-list trans-list2">
-                        <li className="trans-list-item"><div className="TransText">Funds Transfer 12456787 from HBL 12345 to HBL 2345566 </div><p className="li-amt Amt"> Rs. 20000</p></li>
-                        <li className="trans-list-item"><div className="TransText">Funds Transfer 12456787 from HBL 12345 to HBL 2345566 </div><p className="li-amt Amt"> Rs. 20000</p></li>
-                    </ul>
-
-                    <p className="trans-date">11/May/23</p>
-                    <ul className="trans-list trans-list2">
-                        <li className="trans-list-item"><div className="TransText">Funds Transfer 12456787 from HBL 12345 to HBL 2345566 </div><p className="li-amt Amt"> Rs. 20000</p></li>
-                        <li className="trans-list-item"><div className="TransText">Funds Transfer 12456787 from HBL 12345 to HBL 2345566 </div><p className="li-amt Amt"> Rs. 20000</p></li>
-                    </ul>
-
-                    <p className="trans-date">11/May/23</p>
-                    <ul className="trans-list trans-list2">
-                        <li className="trans-list-item"><div className="TransText">Funds Transfer 12456787 from HBL 12345 to HBL 2345566 </div><p className="li-amt Amt"> Rs. 20000</p></li>
-                        <li className="trans-list-item"><div className="TransText">Funds Transfer 12456787 from HBL 12345 to HBL 2345566 </div><p className="li-amt Amt"> Rs. 20000</p></li>
-                    </ul>
-
                 </div>
+            ))}
                 <div className="O-C-balance">
                     <div className="O-balance">
-                    <p className="OB-label Debt-label">Opening Balance</p>
-                    <p className="OB-Amt Amt"> Rs. 20000</p>
+                        <p className="OB-label Debt-label">Opening Balance</p>
+                        <p className="OB-Amt Amt"> Rs. {openingBalance}</p>
                     </div>
-                    <div className = "C-balance">
+                    <div className="C-balance">
                         <p className="CB-label Debt-label">Closing Balance</p>
-                        <p className="OB-Amt Amt"> Rs. 20000</p>
+                        <p className="OB-Amt Amt"> Rs. {closingBalance}</p>
                     </div>
                 </div>
-    
             </div>
 
             <div className="HistoryDetails">

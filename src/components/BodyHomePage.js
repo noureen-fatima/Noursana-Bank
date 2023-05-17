@@ -1,7 +1,115 @@
-import graph from "../resources/graph.svg"
-import React, { useState } from 'react';
-function BodyHomePage() {
+import React, { useState, useEffect } from 'react';
+import { Line } from 'react-chartjs-2';
+import { makeApiRequest } from '../api/api';
 
+function BodyHomePage() {
+    const [transactions, setTransactions] = useState([]);
+    const [closingBalance, setClosingBalance] = useState(0);
+    const [lastLogIn, setLastLogin] = useState(Date);
+    const [currentUser, setCurrentUser] = useState(null);
+    const [user, setUser] = useState({ bankData: {} });
+
+    useEffect(() => {
+        const fetchTransactions = async () => {
+        try {
+            const url = '/transactionData';
+            const method = 'GET';
+            const body = {};
+            const response = await makeApiRequest(url, method, body);
+            setTransactions(response.data);
+            setClosingBalance(response.data[response.data.length - 1].bal);
+        } catch (error) {
+            console.error(error);
+        }
+        };
+
+        const fetchCurrUser = async () => {
+            try{
+                const url = '/CurrentUser';
+                const method = 'GET';
+                const body = {};
+                const response = await makeApiRequest(url, method, body);
+                console.log("current user", response);
+                setLastLogin(response.data.u[0].updatedAt);
+                setCurrentUser(response.data.u[0].currentUser);
+            
+            } catch (error){
+                console.error(error);
+            }
+        };
+
+        fetchTransactions();
+        fetchCurrUser();
+    }, []);
+
+    const chartData = {
+        labels: transactions.map((transaction) => transaction.timestamp),
+        datasets: [
+        {
+            label: 'Balance',
+            data: transactions.map((transaction) => transaction.bal),
+            fill: false,
+            borderColor: 'rgba(216, 174, 94, 1)', // Single color for the border
+            pointBackgroundColor: 'rgba(231, 212, 158, 1)', // Single color for the point background
+            pointBorderColor: 'rgba(231, 212, 158, 1)', // Single color for the point border
+            pointHoverBackgroundColor: 'rgba(231, 212, 158, 1)', // Single color for the point hover background
+            pointHoverBorderColor: 'rgba(231, 212, 158, 1)', // Single color for the point hover border
+            tension: 0.3,
+        },
+        ],
+    };
+
+    // Define the gradient colors for the line chart
+    const gradientColors = [
+        { offset: '0%', color: '#D8AE5E' },
+        { offset: '100%', color: '#E7D49E' },
+    ];
+
+    // Create a linear gradient fill for the line chart
+    const gradientFill = (canvas) => {
+        const ctx = canvas.getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+        gradientColors.forEach((color) => {
+        gradient.addColorStop(color.offset, color.color);
+        });
+        return gradient;
+    };
+
+    const chartOptions = {
+        plugins: {
+        legend: {
+            display: false,
+        },
+        },
+        scales: {
+        x: {
+            ticks: {
+            color: '#000000',
+            },
+        },
+        y: {
+            ticks: {
+            color: '#000000',
+            },
+        },
+        },
+        elements: {
+        line: {
+            borderColor: gradientFill, // Use the gradient fill for the line border color
+            borderWidth: 2,
+            pointRadius: 4,
+            pointBorderWidth: 2,
+            pointBackgroundColor: gradientFill, // Use the gradient fill for the point background color
+            pointBorderColor: gradientFill, // Use the gradient fill for the point border color
+            pointHoverRadius: 6,
+            pointHoverBorderWidth: 2,
+            pointHoverBackgroundColor: gradientFill, // Use the gradient fill for the point hover background color
+            pointHoverBorderColor: gradientFill, // Use the gradient fill for the point hover border color
+        },
+        },
+    };
+
+    
     const ads = [
         {imgLink: "https://autodeals.pk/blog/wp-content/uploads/2023/03/Rolls-Royce-unveils-The-Wraith-Black-Arrow-V-12-Coupe-Model.jpg", per: "5%", name: "Rolls Royce"},
         {imgLink: "https://s01.sgp1.cdn.digitaloceanspaces.com/article/126864-zfwymgwgcj-1567691366.jpeg", per: "15%", name: "Dior"},
@@ -50,12 +158,13 @@ function BodyHomePage() {
                     </div>                    
                 </div>
                 <div className="left-side">
-                    <div className="acc-balance"><p>Rs. 50,789.00</p></div>
-                    <img className="graph-svg" src={graph} alt="graph" />
+                    <div className="acc-balance"><p>Rs. {closingBalance.toFixed(2)}</p></div>
+                    <Line data={chartData} />
+                    <p>Last Log In: {lastLogIn}</p>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default BodyHomePage;
