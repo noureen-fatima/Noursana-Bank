@@ -1,4 +1,3 @@
-
 import facerecg from "../resources/face-recg.svg"
 import React from 'react';
 import { makeApiRequest } from "../api/api";
@@ -57,8 +56,8 @@ function LoginSignup() {
     const registerUser = async() => {
         const url = '/register';
         const method = 'POST';
-        console.log(loginId, password, email, cnic);
-        const body = {loginId, password, email, cnic};
+        console.log(loginId, password, email, cnic, name, cardNo);
+        const body = {loginId, password, email, cnic, name, cardNo};
         console.log(body);
         try {
             const response = await makeApiRequest(url, method, body);
@@ -93,6 +92,7 @@ function LoginSignup() {
         {
             try{
                 await verifySignup();
+                console.log('verify');
                 setShowLoginFields(true);
             }
             catch(error){
@@ -124,16 +124,6 @@ function LoginSignup() {
                 await updateCurrentUser();
                 console.log('current user updated')
                 
-            }
-            catch(error){
-                console.log(error);
-            }
-    };
-
-    const handleLoginSubmit = async (event) => {
-        event.preventDefault();
-            try{
-                await verifyLogin();
             }
             catch(error){
                 console.log(error);
