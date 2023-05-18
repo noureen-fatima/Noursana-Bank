@@ -973,3 +973,137 @@ ul{
   visibility: visible;
   -webkit-transition: all 0.3s ease;
 }
+
+.Card-Info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+}
+
+.card-details-container {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.apply-card-container {
+  flex: 1;
+  display: flex;
+  
+  justify-content:flex-start; 
+  /* Align the form to the right */
+}
+
+.card-application {
+  background-color:  #262d33;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px; /* Adjust the width as needed */
+}
+
+.form-group {
+  margin-bottom: 10px;
+ 
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Additional styles to adjust the layout */
+.Card-Info {
+  margin: 20px;
+}
+
+.card-details {
+  margin-bottom: 20px;
+}
+
+.card-details-info {
+  background-color:  #262d33;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.Card-Info{
+  margin-left: 100px;
+}
+
+.apply-card-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end; /* Align the form to the right */
+  padding: 20px; /* Add padding for space */
+}
+
+.card-application {
+  background-color:  #262d33;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px; /* Increase the width as needed */
+}
+
+.card-application h2 {
+  margin-bottom: 10px; /* Add space below the heading */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Add space between form groups */
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.Card-Info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card-details-container {
+  text-align: center;
+}
+
+.apply-card-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.Card-Info {
+  max-height: 500px; /* Set the maximum height of the container */
+  overflow-y: scroll; /* Enable vertical scroll */
+}
+
+.Card-Info::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.Card-Info::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Rounded corners of the thumb */
+}
+
+.Card-Info::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color of the scrollbar thumb on hover */
+}
