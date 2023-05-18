@@ -316,6 +316,8 @@ code {
   display: flex;
   flex-direction: column;
   margin-left: 60%;
+  margin-right: 30px;
+  margin-top: 20px;
   padding: 20px;
   font-size: 18px;
   border-radius: 10px;
@@ -327,7 +329,11 @@ code {
 .SendMoney input,
 .SendMoney select {
   margin-bottom: 10px;
-  width:70%;
+  width:50%;
+}
+
+.input-from-acc, .input-to-acc,.amt-send-input{
+  width: 200px !important;
 }
 
 .SendMoney label {
@@ -356,6 +362,22 @@ code {
   font-size: 18px;
 }
 
+.add-beneficiary-form{
+  position: relative;
+  padding-left: 80px;
+}
+.amt-send-input{
+  width: 300px;
+  border-radius: 20px;
+  height: 24px;
+  color: white;
+  background-color: #262d33;
+  border: none;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
 .SendMoney input, .loan-req input, .qr-req input{
   width: 500px;
   border-radius: 20px;
@@ -379,7 +401,17 @@ code {
   position: fixed;
   top: 64px;
   width: 100%;
- 
+}
+
+.b-ulist{
+  width: 600px;
+  margin-left: 80px;
+}
+
+.b-ulist li{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
 }
 
 .B-list{
